@@ -1,0 +1,64 @@
+<testsuite name="api_create_user.POST create user" tests="2" errors="0" failures="2" skipped="0" time="0.0005" timestamp="2025-09-10T14:14:52.296136" hostname="dbHomeStudio"><testcase classname="api_create_user.POST create user" name="Criar usuário com sucesso (201) e validar contrato" status="failed" time="0.0"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given the request body ... undefined in 0.000s
+  """
+  {
+    "name": "morpheus",
+    "job": "leader"
+  }
+  """
+Location: features/api_create_user.feature:9
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @post @contract
+  Scenario: Criar usuário com sucesso (201) e validar contrato
+    Given the API base url ... passed in 0.000s
+    Given the request body ... undefined in 0.000s
+      """
+      {
+        "name": "morpheus",
+        "job": "leader"
+      }
+      """
+    When I send a POST request to "/api/users" ... skipped in 0.000s
+    Then the response status code should be 201 ... skipped in 0.000s
+    And the json path "$.name" should equal "morpheus" ... skipped in 0.000s
+    And the json path "$.job" should equal "leader" ... skipped in 0.000s
+    And the response body should match schema "api_contracts/user_created.schema.json" ... skipped in 0.000s
+    And the json path "$.id" should not be empty ... skipped in 0.000s
+    And the json path "$.createdAt" should not be empty ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="api_create_user.POST create user" name="Mensagem/conteúdo esperado em campo" status="failed" time="0.0005"><failure type="NoneType" message="None">
+<![CDATA[
+Failing step: Given the request body ... undefined in 0.000s
+  """
+  {"name":"Neo","job":"The One"}
+  """
+Location: features/api_create_user.feature:26
+None]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+
+  @message @post
+  Scenario: Mensagem/conteúdo esperado em campo
+    Given the API base url ... passed in 0.000s
+    Given the request body ... undefined in 0.000s
+      """
+      {"name":"Neo","job":"The One"}
+      """
+    When I send a POST request to "/api/users" ... skipped in 0.000s
+    Then the response status code should be 201 ... skipped in 0.000s
+    And the json path "$.name" should equal "Neo" ... skipped in 0.000s
+    And the response should contain text "createdAt" ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

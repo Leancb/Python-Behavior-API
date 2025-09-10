@@ -5,7 +5,7 @@ install:
 	pip install -r requirements.txt
 
 test:
-	behave -f pretty -f allure -o reports/allure-results
+	behave -f pretty -o stdout -f allure -o reports/allure-results
 
 report:
 	@echo "Para abrir Allure localmente:"

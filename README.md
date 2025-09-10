@@ -23,7 +23,15 @@ pip install -r requirements.txt
 
 ## Executar testes
 ```bash
-behave -f pretty -f allure -o reports/allure-results
+# Garante saída do pretty no console e resultados do allure na pasta:
+behave -f pretty -o stdout -f allure -o reports/allure-results
+```
+**Alternativa com variável de ambiente:**
+```bash
+# PowerShell
+$env:ALLURE_RESULTS_DIR="reports/allure-results"; behave -f pretty
+# Linux/macOS
+export ALLURE_RESULTS_DIR=reports/allure-results && behave -f pretty
 ```
 
 ## Relatório Allure (local)
@@ -41,6 +49,5 @@ docker run --rm --env-file .env python-behavior-api:latest
 ## CI/CD (GitHub Actions)
 - O workflow `API BDD CI` roda em cada push/PR:
   - Instala dependências
-  - Executa o Behave
+  - Executa o Behave com pretty+allure (cada um com seu `-o`)
   - Publica **artifact** com `reports/allure-results`
-- (Opcional) Você pode adicionar um job de publicação do Allure em Pages se desejar.

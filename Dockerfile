@@ -8,4 +8,4 @@ COPY . .
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-CMD ["behave", "-f", "pretty", "-f", "allure", "-o", "reports/allure-results"]
+CMD ["behave", "-f", "pretty", "-o", "stdout", "-f", "allure", "-o", "reports/allure-results"]
