@@ -23,11 +23,11 @@ def step_send(context, method, path):
 
 @then('the response status code should be {code:d}')
 def step_status(context, code):
-    assert context.last_response.response.status_code == code, \        f"Esperado {code}, obtido {context.last_response.response.status_code}"
+    assert context.last_response.response.status_code == code, f"Esperado {code}, obtido {context.last_response.response.status_code}"
 
 @then('the response time should be less than {ms:d} ms')
 def step_time(context, ms):
-    assert context.last_response.elapsed_ms < ms, \        f"Demorou {context.last_response.elapsed_ms} ms (limite {ms} ms)"
+    assert context.last_response.elapsed_ms < ms, f"Demorou {context.last_response.elapsed_ms} ms (limite {ms} ms)"
 
 @then('the response header "{name}" should contain "{partial}"')
 def step_header_contains(context, name, partial):
