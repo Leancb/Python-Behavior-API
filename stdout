@@ -5,32 +5,32 @@ Feature: POST create user # features/api_create_user.feature:1
   @post @contract
   Scenario: Criar usuário com sucesso (201) e validar contrato                         # features/api_create_user.feature:8
     Given the API base url                                                             # features/steps/api_steps.py:10
-    Given the request body                                                             # None
+    Given the request body                                                             # features/steps/api_steps.py:15
       """
       {
         "name": "morpheus",
         "job": "leader"
       }
       """
-    When I send a POST request to "/api/users"                                         # None
-    Then the response status code should be 201                                        # None
-    And the json path "$.name" should equal "morpheus"                                 # None
-    And the json path "$.job" should equal "leader"                                    # None
-    And the response body should match schema "api_contracts/user_created.schema.json" # None
-    And the json path "$.id" should not be empty                                       # None
-    And the json path "$.createdAt" should not be empty                                # None
+    When I send a POST request to "/api/users"                                         # features/steps/api_steps.py:20
+    Then the response status code should be 201                                        # features/steps/api_steps.py:27
+    And the json path "$.name" should equal "morpheus"                                 # features/steps/api_steps.py:49
+    And the json path "$.job" should equal "leader"                                    # features/steps/api_steps.py:49
+    And the response body should match schema "api_contracts/user_created.schema.json" # features/steps/api_steps.py:74
+    And the json path "$.id" should not be empty                                       # features/steps/api_steps.py:54
+    And the json path "$.createdAt" should not be empty                                # features/steps/api_steps.py:54
 
   @message @post
   Scenario: Mensagem/conteúdo esperado em campo      # features/api_create_user.feature:25
     Given the API base url                           # features/steps/api_steps.py:10
-    Given the request body                           # None
+    Given the request body                           # features/steps/api_steps.py:15
       """
       {"name":"Neo","job":"The One"}
       """
-    When I send a POST request to "/api/users"       # None
-    Then the response status code should be 201      # None
-    And the json path "$.name" should equal "Neo"    # None
-    And the response should contain text "createdAt" # None
+    When I send a POST request to "/api/users"       # features/steps/api_steps.py:20
+    Then the response status code should be 201      # features/steps/api_steps.py:27
+    And the json path "$.name" should equal "Neo"    # features/steps/api_steps.py:49
+    And the response should contain text "createdAt" # features/steps/api_steps.py:44
 
 Feature: GET users - lista paginada # features/api_get_users.feature:1
   As a QA
@@ -41,24 +41,24 @@ Feature: GET users - lista paginada # features/api_get_users.feature:1
   @smoke @get
   Scenario: Status 200, tempo e headers válidos                              # features/api_get_users.feature:10
     Given the API base url                                                   # features/steps/api_steps.py:10
-    When I send a GET request to "/api/users?page=2"                         # features/steps/api_steps.py:19
-    Then the response status code should be 200                              # features/steps/api_steps.py:24
-    And the response time should be less than 1500 ms                        # features/steps/api_steps.py:30
-    And the response header "Content-Type" should contain "application/json" # features/steps/api_steps.py:36
+    When I send a GET request to "/api/users?page=2"                         # features/steps/api_steps.py:20
+    Then the response status code should be 200                              # features/steps/api_steps.py:27
+    And the response time should be less than 1500 ms                        # features/steps/api_steps.py:33
+    And the response header "Content-Type" should contain "application/json" # features/steps/api_steps.py:39
 
   @contract @get
   Scenario: Corpo segue o contrato (lista de usuários)                                # features/api_get_users.feature:17
     Given the API base url                                                            # features/steps/api_steps.py:10
-    When I send a GET request to "/api/users?page=2"                                  # features/steps/api_steps.py:19
-    Then the response body should match schema "api_contracts/users_list.schema.json" # features/steps/api_steps.py:71
+    When I send a GET request to "/api/users?page=2"                                  # features/steps/api_steps.py:20
+    Then the response body should match schema "api_contracts/users_list.schema.json" # features/steps/api_steps.py:74
 
   @body @get
   Scenario: Campos principais do corpo existem e têm tipos esperados  # features/api_get_users.feature:22
     Given the API base url                                            # features/steps/api_steps.py:10
-    When I send a GET request to "/api/users?page=2"                  # features/steps/api_steps.py:19
-    Then the json path "$.page" should be an integer                  # features/steps/api_steps.py:56
-    And the json path "$.data" should be an array                     # features/steps/api_steps.py:61
-    And the json path "$.data[0].email" should contain "@"            # features/steps/api_steps.py:66
+    When I send a GET request to "/api/users?page=2"                  # features/steps/api_steps.py:20
+    Then the json path "$.page" should be an integer                  # features/steps/api_steps.py:59
+    And the json path "$.data" should be an array                     # features/steps/api_steps.py:64
+    And the json path "$.data[0].email" should contain "@"            # features/steps/api_steps.py:69
 
 Feature: Casos negativos # features/api_negative.feature:1
   Verificar mensagens, status e corpo em erros
@@ -67,11 +67,11 @@ Feature: Casos negativos # features/api_negative.feature:1
   @negative @auth
   Scenario: Login sem senha retorna 400 e mensagem          # features/api_negative.feature:8
     Given the API base url                                  # features/steps/api_steps.py:10
-    Given the request body                                  # None
+    Given the request body                                  # features/steps/api_steps.py:15
       """
       {"email":"peter@klaven"}
       """
-    When I send a POST request to "/api/login"              # None
-    Then the response status code should be 400             # None
-    And the response should contain text "Missing password" # None
+    When I send a POST request to "/api/login"              # features/steps/api_steps.py:20
+    Then the response status code should be 400             # features/steps/api_steps.py:27
+    And the response should contain text "Missing password" # features/steps/api_steps.py:44
 

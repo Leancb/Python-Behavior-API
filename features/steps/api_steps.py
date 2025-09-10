@@ -21,6 +21,8 @@ def step_body(context):
 def step_send(context, method, path):
     body = getattr(context, "request_body", None)
     context.last_response = http_client.request(method, path, body=body)
+    if hasattr(context, "request_body"):
+        delattr(context, "request_body")
 
 @then('the response status code should be {code:d}')
 def step_status(context, code):

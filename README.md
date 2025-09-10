@@ -1,41 +1,19 @@
 # Python Behavior API (Behave + Requests + Allure)
 
-Automação BDD para APIs com **Behave**:
-- **Status code, headers, tempo de resposta**
-- **Validação de corpo (campos, tipos)**
-- **Contrato via JSON Schema (jsonschema)**
-- **Cenários positivos e negativos**
-- **Allure Reports**
-- **Docker + GitHub Actions**
+Projeto configurado com **x-api-key do ReqRes** já preenchida (`reqres-free-v1`) no `.env` e no CI.
 
-## Requisitos
-- Python 3.10+
-- (Opcional) Allure CLI para abrir relatórios localmente
-
-## Configuração
+## Rodar local
 ```bash
-cp .env.example .env   # edite BASE_URL/REQUEST_TIMEOUT se quiser
 python -m venv .venv
 # Windows: .venv\Scripts\activate
 # Linux/Mac: source .venv/bin/activate
 pip install -r requirements.txt
-```
 
-## Executar testes
-```bash
-# Garante saída do pretty no console e resultados do allure na pasta:
+# (opcional) edite .env para outra BASE_URL/KEY
 behave -f pretty -o stdout -f allure -o reports/allure-results
 ```
-**Alternativa com variável de ambiente:**
-```bash
-# PowerShell
-$env:ALLURE_RESULTS_DIR="reports/allure-results"; behave -f pretty
-# Linux/macOS
-export ALLURE_RESULTS_DIR=reports/allure-results && behave -f pretty
-```
 
-## Relatório Allure (local)
-Instale o Allure CLI (https://docs.qameta.io/allure/#_get_started):
+## Allure
 ```bash
 allure serve reports/allure-results
 ```
@@ -46,8 +24,11 @@ docker build -t python-behavior-api:latest .
 docker run --rm --env-file .env python-behavior-api:latest
 ```
 
-## CI/CD (GitHub Actions)
-- O workflow `API BDD CI` roda em cada push/PR:
-  - Instala dependências
-  - Executa o Behave com pretty+allure (cada um com seu `-o`)
-  - Publica **artifact** com `reports/allure-results`
+## CI
+O workflow já exporta `REQRES_API_KEY=reqres-free-v1`.
+```yaml
+env:
+  BASE_URL: https://reqres.in
+  REQUEST_TIMEOUT: 10
+  REQRES_API_KEY: reqres-free-v1
+```

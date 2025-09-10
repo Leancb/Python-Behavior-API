@@ -1,62 +1,43 @@
-<testsuite name="api_create_user.POST create user" tests="2" errors="0" failures="2" skipped="0" time="0.000996" timestamp="2025-09-10T14:19:12.738301" hostname="dbHomeStudio"><testcase classname="api_create_user.POST create user" name="Criar usuário com sucesso (201) e validar contrato" status="failed" time="0.000496"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the request body ... undefined in 0.000s
-  """
-  {
-    "name": "morpheus",
-    "job": "leader"
-  }
-  """
-Location: features/api_create_user.feature:9
-None]]>
-</failure><system-out>
+<testsuite name="api_create_user.POST create user" tests="2" errors="0" failures="0" skipped="0" time="0.799969" timestamp="2025-09-10T14:48:45.482776" hostname="dbHomeStudio"><testcase classname="api_create_user.POST create user" name="Criar usuário com sucesso (201) e validar contrato" status="passed" time="0.464239"><system-out>
 <![CDATA[
 @scenario.begin
 
   @post @contract
   Scenario: Criar usuário com sucesso (201) e validar contrato
     Given the API base url ... passed in 0.000s
-    Given the request body ... undefined in 0.000s
+    Given the request body ... passed in 0.001s
       """
       {
         "name": "morpheus",
         "job": "leader"
       }
       """
-    When I send a POST request to "/api/users" ... skipped in 0.000s
-    Then the response status code should be 201 ... skipped in 0.000s
-    And the json path "$.name" should equal "morpheus" ... skipped in 0.000s
-    And the json path "$.job" should equal "leader" ... skipped in 0.000s
-    And the response body should match schema "api_contracts/user_created.schema.json" ... skipped in 0.000s
-    And the json path "$.id" should not be empty ... skipped in 0.000s
-    And the json path "$.createdAt" should not be empty ... skipped in 0.000s
+    When I send a POST request to "/api/users" ... passed in 0.460s
+    Then the response status code should be 201 ... passed in 0.001s
+    And the json path "$.name" should equal "morpheus" ... passed in 0.000s
+    And the json path "$.job" should equal "leader" ... passed in 0.000s
+    And the response body should match schema "api_contracts/user_created.schema.json" ... passed in 0.002s
+    And the json path "$.id" should not be empty ... passed in 0.000s
+    And the json path "$.createdAt" should not be empty ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
 ]]>
-</system-out></testcase><testcase classname="api_create_user.POST create user" name="Mensagem/conteúdo esperado em campo" status="failed" time="0.0005"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the request body ... undefined in 0.000s
-  """
-  {"name":"Neo","job":"The One"}
-  """
-Location: features/api_create_user.feature:26
-None]]>
-</failure><system-out>
+</system-out></testcase><testcase classname="api_create_user.POST create user" name="Mensagem/conteúdo esperado em campo" status="passed" time="0.33573"><system-out>
 <![CDATA[
 @scenario.begin
 
   @message @post
   Scenario: Mensagem/conteúdo esperado em campo
-    Given the API base url ... passed in 0.000s
-    Given the request body ... undefined in 0.000s
+    Given the API base url ... passed in 0.001s
+    Given the request body ... passed in 0.001s
       """
       {"name":"Neo","job":"The One"}
       """
-    When I send a POST request to "/api/users" ... skipped in 0.000s
-    Then the response status code should be 201 ... skipped in 0.000s
-    And the json path "$.name" should equal "Neo" ... skipped in 0.000s
-    And the response should contain text "createdAt" ... skipped in 0.000s
+    When I send a POST request to "/api/users" ... passed in 0.334s
+    Then the response status code should be 201 ... passed in 0.000s
+    And the json path "$.name" should equal "Neo" ... passed in 0.000s
+    And the response should contain text "createdAt" ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------

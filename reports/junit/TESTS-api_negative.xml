@@ -1,25 +1,17 @@
-<testsuite name="api_negative.Casos negativos" tests="1" errors="0" failures="1" skipped="0" time="0.000497" timestamp="2025-09-10T14:19:13.236067" hostname="dbHomeStudio"><testcase classname="api_negative.Casos negativos" name="Login sem senha retorna 400 e mensagem" status="failed" time="0.000497"><failure type="NoneType" message="None">
-<![CDATA[
-Failing step: Given the request body ... undefined in 0.000s
-  """
-  {"email":"peter@klaven"}
-  """
-Location: features/api_negative.feature:9
-None]]>
-</failure><system-out>
+<testsuite name="api_negative.Casos negativos" tests="1" errors="0" failures="0" skipped="0" time="0.352066" timestamp="2025-09-10T14:48:46.361664" hostname="dbHomeStudio"><testcase classname="api_negative.Casos negativos" name="Login sem senha retorna 400 e mensagem" status="passed" time="0.352066"><system-out>
 <![CDATA[
 @scenario.begin
 
   @negative @auth
   Scenario: Login sem senha retorna 400 e mensagem
     Given the API base url ... passed in 0.000s
-    Given the request body ... undefined in 0.000s
+    Given the request body ... passed in 0.000s
       """
       {"email":"peter@klaven"}
       """
-    When I send a POST request to "/api/login" ... skipped in 0.000s
-    Then the response status code should be 400 ... skipped in 0.000s
-    And the response should contain text "Missing password" ... skipped in 0.000s
+    When I send a POST request to "/api/login" ... passed in 0.351s
+    Then the response status code should be 400 ... passed in 0.000s
+    And the response should contain text "Missing password" ... passed in 0.000s
 
 @scenario.end
 --------------------------------------------------------------------------------
