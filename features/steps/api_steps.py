@@ -12,6 +12,7 @@ def step_base_url(context):
     # Apenas marcador. BASE_URL vem do .env
     pass
 
+@given('the request body')
 @given('the request body:')
 def step_body(context):
     context.request_body = json.loads(context.text)

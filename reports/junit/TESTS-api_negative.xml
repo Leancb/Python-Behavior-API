@@ -1,4 +1,4 @@
-<testsuite name="api_negative.Casos negativos" tests="1" errors="0" failures="1" skipped="0" time="0.0" timestamp="2025-09-10T14:14:52.846757" hostname="dbHomeStudio"><testcase classname="api_negative.Casos negativos" name="Login sem senha retorna 400 e mensagem" status="failed" time="0.0"><failure type="NoneType" message="None">
+<testsuite name="api_negative.Casos negativos" tests="1" errors="0" failures="1" skipped="0" time="0.000497" timestamp="2025-09-10T14:19:13.236067" hostname="dbHomeStudio"><testcase classname="api_negative.Casos negativos" name="Login sem senha retorna 400 e mensagem" status="failed" time="0.000497"><failure type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the request body ... undefined in 0.000s
   """

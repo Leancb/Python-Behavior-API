@@ -1,4 +1,4 @@
-<testsuite name="api_create_user.POST create user" tests="2" errors="0" failures="2" skipped="0" time="0.0005" timestamp="2025-09-10T14:14:52.296136" hostname="dbHomeStudio"><testcase classname="api_create_user.POST create user" name="Criar usuário com sucesso (201) e validar contrato" status="failed" time="0.0"><failure type="NoneType" message="None">
+<testsuite name="api_create_user.POST create user" tests="2" errors="0" failures="2" skipped="0" time="0.000996" timestamp="2025-09-10T14:19:12.738301" hostname="dbHomeStudio"><testcase classname="api_create_user.POST create user" name="Criar usuário com sucesso (201) e validar contrato" status="failed" time="0.000496"><failure type="NoneType" message="None">
 <![CDATA[
 Failing step: Given the request body ... undefined in 0.000s
   """
