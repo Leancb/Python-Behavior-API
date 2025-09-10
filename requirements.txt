@@ -1,0 +1,6 @@
+behave==1.2.6
+requests==2.32.3
+jsonschema==4.23.0
+allure-behave==2.13.5
+python-dotenv==1.0.1
+PyHamcrest==2.1.0
